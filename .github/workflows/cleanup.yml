@@ -18,7 +18,7 @@ jobs:
           node-version: '18'
 
       - name: Run cleanup script
-        run: node cleanup.js
+        run: node netlify/functions/cleanup.js
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v4
