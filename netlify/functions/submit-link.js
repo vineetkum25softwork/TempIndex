@@ -6,8 +6,8 @@ exports.handler = async function(event, context) {
   }
 
   const token = process.env.GITHUB_PAT;
-  const repoOwner = 'YOUR_GITHUB_USERNAME'; // replace with your GitHub username
-  const repo = 'YOUR_REPO_NAME'; // replace with your repository name
+  const repoOwner = 'vineetkum25softwork'; // replace with your GitHub username
+  const repo = 'TempIndex'; // replace with your repository name
   const filePath = 'links.json';
   const branch = 'main'; // or your default branch
 
