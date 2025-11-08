@@ -32,13 +32,11 @@
       const title = form.title.value.trim();
       const description = form.description.value.trim();
 
-      // Basic validation
       if (!url || !title || !description) {
         message.textContent = 'All fields are required.';
         return;
       }
 
-      // Example limits check
       if (title.split(' ').length > 20) {
         message.textContent = 'Title exceeds 20 words.';
         return;
@@ -48,9 +46,8 @@
         return;
       }
 
-      // Send data to backend API (to be created later)
       try {
-        const response = await fetch('https://your-backend-api-url/submit', {
+        const response = await fetch('https://tindex.netlify.app/.netlify/functions/submit-link', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ url, title, description })
