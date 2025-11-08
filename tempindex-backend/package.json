@@ -1,0 +1,12 @@
+{
+  "name": "tempindex-backend",
+  "version": "1.0.0",
+  "description": "Netlify backend functions for TempIndex",
+  "main": "netlify/functions/submit-link.js",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
