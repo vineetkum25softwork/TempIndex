@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Submit a Link - TempIndex</title>
+</head>
+<body>
+  <h1>Submit a New Link</h1>
+  <form id="submitForm">
+    <label>
+      URL: <input type="url" id="url" name="url" required placeholder="https://example.com" />
+    </label><br /><br />
+    <label>
+      Title (max 20 words): <input type="text" id="title" name="title" maxlength="100" required />
+    </label><br /><br />
+    <label>
+      Description (max 100 words):<br />
+      <textarea id="description" name="description" maxlength="500" rows="5" required></textarea>
+    </label><br /><br />
+    <button type="submit">Submit</button>
+  </form>
+  <p id="message"></p>
+
+  <script>
+    const form = document.getElementById('submitForm');
+    const message = document.getElementById('message');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const url = form.url.value.trim();
+      const title = form.title.value.trim();
+      const description = form.description.value.trim();
+
+      // Basic validation
+      if (!url || !title || !description) {
+        message.textContent = 'All fields are required.';
+        return;
+      }
+
+      // Example limits check
+      if (title.split(' ').length > 20) {
+        message.textContent = 'Title exceeds 20 words.';
+        return;
+      }
+      if (description.split(' ').length > 100) {
+        message.textContent = 'Description exceeds 100 words.';
+        return;
+      }
+
+      // Send data to backend API (to be created later)
+      try {
+        const response = await fetch('https://your-backend-api-url/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url, title, description })
+        });
+
+        if (response.ok) {
+          message.textContent = 'Link submitted successfully!';
+          form.reset();
+        } else {
+          const errorData = await response.json();
+          message.textContent = 'Error: ' + (errorData.message || 'Submission failed');
+        }
+      } catch (error) {
+        message.textContent = 'Network error: ' + error.message;
+      }
+    });
+  </script>
+</body>
+</html>
