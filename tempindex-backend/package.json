@@ -4,9 +4,16 @@
   "description": "Netlify backend functions for TempIndex",
   "main": "netlify/functions/submit-link.js",
   "dependencies": {
+    "@octokit/rest": "^22.0.1",
     "node-fetch": "^2.6.7"
   },
   "engines": {
     "node": ">=14"
-  }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
